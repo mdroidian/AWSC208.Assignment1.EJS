@@ -6,7 +6,14 @@ const axios = require('axios');
 router.get('/', (req, res)=> {
     let isAuthenticated = req.oidc.isAuthenticated();
     res.render("index", { 
-        title: "My auth app",
+        title: "AWSC208 Quiz 1",
+        isAuthenticated: isAuthenticated
+     });
+});
+router.get('/contact', (req, res)=> {
+    let isAuthenticated = req.oidc.isAuthenticated();
+    res.render("contact", { 
+        title: "Contact Us",
         isAuthenticated: isAuthenticated
      });
 });

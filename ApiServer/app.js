@@ -6,19 +6,24 @@
 const express = require('express');
 const app  = express();
 const { expressjwt: jwt } = require('express-jwt');
-var jwks = require('jwks-rsa');
+const jwks = require('jwks-rsa');
+const dotenv = require('dotenv')
+dotenv.config({path: '../.env'});
 
-var jwtCheck = jwt({
+const jwtCheck = jwt({
     secret: jwks.expressJwtSecret({
         cache: true,
         rateLimit: true,
         jwksRequestsPerMinute: 5,
-        jwksUri: 'https://dev-mda53ujl.us.auth0.com/.well-known/jwks.json'
+        // jwksUri: `'${process.env.ISSUER}.well-known/jwks.json'`
+        // jwksUri: jwksUri
+        jwksUri: process.env.JWKSURI
   }),
-  audience: 'http://localhost:5000',
-  issuer: 'https://dev-mda53ujl.us.auth0.com/',
+  audience: process.env.AUDIENCE,
+  issuer: process.env.ISSUER,
   algorithms: ['RS256']
 });
+
 
 app.get('/public', (req, res) => {
     res.json({

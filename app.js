@@ -14,10 +14,12 @@ const config = {
   clientSecret: process.env.CLIENTSECRET,
   authorizationParams: {
     response_type: 'code',
-    audience: 'http://localhost:5000',
+    audience: process.env.AUDIENCE,
     scope: 'openid profile email'
   }
 };
+
+console.log(process.env.ISSUER);
 
 app.set("views", "views");
 app.set("view engine", "ejs");
@@ -31,5 +33,5 @@ app.use("/", indexRouter);
 var port = 3000;
 
 app.listen(3000, () => {
-    console.log(`App is running on ${port}`);
+    console.log(`App is running on ${process.env.BASEURL}`);
 })
