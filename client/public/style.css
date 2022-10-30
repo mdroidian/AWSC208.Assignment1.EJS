@@ -5,3 +5,6 @@ h1 {
 .logo {
     font-family: 'Bangers', cursive;
 }
+body {
+    background-image: url("./bg3.jpg");
+}
