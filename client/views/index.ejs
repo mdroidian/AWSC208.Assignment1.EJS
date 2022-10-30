@@ -5,9 +5,12 @@
     <div class="container">
     
         <%- include ('partials/nav') %>
-        <%- include ('partials/banner') %>
 
+        <% if(isAuthenticated) { %>
+        <%- include ('partials/banner') %>
+        <% } %>
     </div>    
+    
 <%- include ('partials/footer') %>
 </body>
 </html>

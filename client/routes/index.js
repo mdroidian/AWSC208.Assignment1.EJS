@@ -10,11 +10,19 @@ router.get('/', (req, res)=> {
         isAuthenticated: isAuthenticated
      });
 });
-router.get('/contact', (req, res)=> {
+router.get('/contact', async(req, res)=> {
+    let data = {}
     let isAuthenticated = req.oidc.isAuthenticated();
+    try {
+        const apiResponse = await axios.get('http://localhost:5000/contact')
+        data = apiResponse.data
+    } catch (e) {
+        console.log(e);
+    }
     res.render("contact", { 
         title: "Contact Us",
-        isAuthenticated: isAuthenticated
+        isAuthenticated: isAuthenticated,
+        data
      });
 });
 

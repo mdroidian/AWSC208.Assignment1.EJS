@@ -25,7 +25,7 @@ const jwtCheck = jwt({
 });
 
 
-app.get('/public', (req, res) => {
+app.get('/contact', (req, res) => {
     res.json({
         type: "public"
     })
