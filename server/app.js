@@ -32,9 +32,9 @@ app.get('/contact', (req, res) => {
 })
 
 // jwt middleware checking if the request has a valid token
-app.get('/private', jwtCheck, (req, res) => {
+app.get('/secured', jwtCheck, (req, res) => {
     res.json({
-        type: "private"
+        type: "secured"
     })
 })
 
