@@ -1,16 +1,16 @@
-var express = require("express");
-var router = express.Router();
-const { requiresAuth } = require('express-openid-connect');
 const axios = require('axios');
 
-router.get('/', (req, res)=> {
+// homepage
+const index = async(req,res) => {
     let isAuthenticated = req.oidc.isAuthenticated();
     res.render("index", { 
         title: "AWSC208 Quiz 1",
         isAuthenticated: isAuthenticated
      });
-});
-router.get('/contact', async(req, res)=> {
+}
+
+// contact us page
+const contact = async(req, res) => {
     let data = {}
     let isAuthenticated = req.oidc.isAuthenticated();
     try {
@@ -23,11 +23,11 @@ router.get('/contact', async(req, res)=> {
         title: "Contact Us",
         isAuthenticated: isAuthenticated,
         data
-     });
-});
+    });
+};
 
-// trigger the endoint, and call the middleware, if the user is logged in or not
-router.get('/secured', requiresAuth(), async(req, res) => {
+// secured page
+const secured = async(req, res) => {
     let data = {}
     const { token_type, access_token } = req.oidc.accessToken;
 
@@ -49,7 +49,11 @@ router.get('/secured', requiresAuth(), async(req, res) => {
         title: "Secured Page",
         isAuthenticated: req.oidc.isAuthenticated(),
         data
-    })
-}) 
+    });
+};
 
-module.exports = router;
+module.exports = {
+    index,
+    contact,
+    secured,
+  }
