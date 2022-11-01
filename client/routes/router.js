@@ -9,5 +9,7 @@ router.get('/contact', controller.contact);
 
 // trigger the endoint, and call the middleware, if the user is logged in or not
 router.get('/secured', requiresAuth(), controller.secured);
+router.get('/admin', requiresAuth(), controller.admin);
+router.get('/not_admin', controller.not_admin);
 
 module.exports = router;
