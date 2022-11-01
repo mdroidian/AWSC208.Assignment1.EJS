@@ -7,6 +7,11 @@ const index = async(req,res) => {
         title: "AWSC208 Assignment 1",
         isAuthenticated: isAuthenticated
      });
+
+    // server side (?) so doesn't work :(
+    // const myToastEl = document.getElementById('toast')
+    // const myToast = bootstrap.Toast.getInstance(myToastEl)
+    // myToast.show()
 }
 
 // not admin
