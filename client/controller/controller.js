@@ -14,6 +14,23 @@ const index = async(req,res) => {
     // myToast.show()
 }
 
+const logginedin = async(req, res) => {
+    let isAuthenticated = req.oidc.isAuthenticated();
+    res.render("loggedin", { 
+        title: "Logged in",
+        isAuthenticated: isAuthenticated
+     });
+
+}
+const login = async(req, res) => {
+    let isAuthenticated = req.oidc.isAuthenticated();
+    if (isAuthenticated){
+        res.redirect("/loggedin")
+    } else {
+        res.redirect("/login")
+    }
+}
+
 // not admin
 const not_admin = async(req,res) => {
     let isAuthenticated = req.oidc.isAuthenticated();
@@ -97,6 +114,8 @@ const admin = async(req, res) => {
 };
 module.exports = {
     index,
+    login,
+    logginedin,
     contact,
     secured,
     admin,

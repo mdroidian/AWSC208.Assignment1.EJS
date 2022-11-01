@@ -18,6 +18,9 @@ const config = {
     response_type: 'code',
     audience: process.env.AUDIENCE,
     scope: 'openid profile email'
+  },
+  routes: {
+    login: false,
   }
 };
 
