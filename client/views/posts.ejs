@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include ('partials/header') %>
+<body>
+    <div class="container">
+    
+        <%- include ('partials/nav') %>
+        
+        <% posts.forEach(post => { %>
+
+            <div class="card mb-4">
+                <h5 class="card-header"><%= post.title %></h5>
+                <div class="card-body">
+                  <p class="card-text"><%= post.body %></p>
+                  <a href="#" class="btn btn-primary"><%= post.snippet %></a>
+                </div>
+            </div>
+
+        <% }) %>
+
+    </div>    
+<%- include ('partials/footer') %>
+</body>
+</html>

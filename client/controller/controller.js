@@ -21,8 +21,34 @@ const logginedin = async(req, res) => {
     res.render("loggedin", { 
         title: "Logged in",
         isAuthenticated: isAuthenticated
-     });
+    });
+    
+}
 
+const blog_index = (req, res) => {
+    let isAuthenticated = req.oidc.isAuthenticated();
+    
+    if(isAuthenticated) {
+        Blog.find().sort({
+            createdAt: -1
+        }).then(result => {
+            res.render("posts", {
+                posts: result,
+                title: "Page",
+                isAuthenticated: isAuthenticated
+            })
+            console.log(result)
+            console.log(isAuthenticated)
+            })
+        } 
+}
+
+const show_posts = async(req, res) => {
+    let isAuthenticated = req.oidc.isAuthenticated();
+    res.render("posts", {
+        title: "Posts",
+        isAuthenticated: isAuthenticated,
+    })
 }
 
 const create_blog_post = async(req, res) => {
@@ -36,6 +62,7 @@ const create_blog_post = async(req, res) => {
     //     console.log(e);
     // });
 }
+
 
 const login = async(req, res) => {
     let isAuthenticated = req.oidc.isAuthenticated();
@@ -71,6 +98,8 @@ const contact = async(req, res) => {
         data
     });
 };
+
+
 
 // secured page
 const secured = async(req, res) => {
@@ -127,6 +156,7 @@ const admin = async(req, res) => {
 
 
 };
+
 module.exports = {
     index,
     login,
@@ -136,4 +166,6 @@ module.exports = {
     admin,
     not_admin,
     create_blog_post,
-  }
+    show_posts,
+    blog_index,
+}

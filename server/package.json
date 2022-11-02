@@ -16,6 +16,8 @@
     "express-jwt": "^7.7.7",
     "express-jwt-authz": "^2.4.1",
     "jwks-rsa": "^2.1.5",
+    "mongood": "^0.0.5",
+    "mongoose": "^6.7.0",
     "nodemon": "^2.0.20"
   }
 }

@@ -36,10 +36,13 @@ app.use(auth(config));
 
 app.use("/", indexRouter);
 
-var port = 3000;
-
-app.listen(3000, () => {
-    console.log(`App is running on ${process.env.BASEURL}`);
-})
-
-
+const mongoose = require('mongoose');
+const dbURI = process.env.MONGO_CONNECTION;
+mongoose.connect(dbURI, {useNewUrlParser: true, useUnifiedTopology: true})
+  .then((result) => app.listen(
+    process.env.CLIENT_PORT || 3000, () => {
+      console.log(`App is running on ${process.env.BASEURL}`);
+    }
+    )
+  )
+  .catch((err) => console.log(err));

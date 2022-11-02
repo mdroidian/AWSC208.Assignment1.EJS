@@ -11,6 +11,9 @@ router.get('/', controller.index);
 router.get('/contact', controller.contact);
 router.get('/loggedin', controller.logginedin);
 router.get('/login', requiresAuth(), controller.login);
+router.get('/posts', controller.blog_index);
+// router.get('/posts', controller.show_posts);
+
 router.post('/submit', urlencodedParser, controller.create_blog_post);
 
 // trigger the endoint, and call the middleware, if the user is logged in or not
