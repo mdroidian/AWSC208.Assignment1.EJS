@@ -5,8 +5,7 @@ const axios = require('axios');
 const controller = require('../controller/controller');
 
 const bodyParser = require("body-parser");
-var jsonParser = bodyParser.json()
-var urlencodedParser = bodyParser.urlencoded({ extended: false })
+const urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 router.get('/', controller.index);
 router.get('/contact', controller.contact);
