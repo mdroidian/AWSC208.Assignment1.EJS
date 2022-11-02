@@ -2,6 +2,7 @@ var express = require("express");
 var app = express();
 var indexRouter = require("./routes/router");
 const { auth } = require('express-openid-connect');
+const bodyParser = require("body-parser");
 
 const dotenv = require('dotenv')
 dotenv.config({path: '../.env'});
@@ -40,3 +41,5 @@ var port = 3000;
 app.listen(3000, () => {
     console.log(`App is running on ${process.env.BASEURL}`);
 })
+
+

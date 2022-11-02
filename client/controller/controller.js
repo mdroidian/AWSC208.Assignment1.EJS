@@ -1,4 +1,6 @@
 const axios = require('axios');
+const Blog = require('../model/blog')
+
 
 // homepage
 const index = async(req,res) => {
@@ -22,6 +24,19 @@ const logginedin = async(req, res) => {
      });
 
 }
+
+const create_blog_post = async(req, res) => {
+    console.log("Data ", req.body);
+    // const blog = new Blog(req.body);
+    // blog.save()
+    // .then(result => {
+    //     res.redirect('/');
+    // })
+    // .catch(e => {
+    //     console.log(e);
+    // });
+}
+
 const login = async(req, res) => {
     let isAuthenticated = req.oidc.isAuthenticated();
     if (isAuthenticated){
@@ -120,4 +135,5 @@ module.exports = {
     secured,
     admin,
     not_admin,
+    create_blog_post,
   }
