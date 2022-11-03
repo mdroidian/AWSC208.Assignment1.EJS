@@ -53,14 +53,14 @@ const show_posts = async(req, res) => {
 
 const create_blog_post = async(req, res) => {
     console.log("Data ", req.body);
-    // const blog = new Blog(req.body);
-    // blog.save()
-    // .then(result => {
-    //     res.redirect('/');
-    // })
-    // .catch(e => {
-    //     console.log(e);
-    // });
+    const blog = new Blog(req.body);
+    blog.save()
+    .then(result => {
+        res.redirect('/posts');
+    })
+    .catch(e => {
+        console.log(e);
+    });
 }
 
 
