@@ -16,6 +16,18 @@
                   <a href="/submit/update/<%= post._id %>" class="btn btn-primary">Update Post</a>
                   <a href="/submit/delete/<%= post._id %>" class="btn btn-secondary">Delete Post</a>
                 </div>
+
+                <form action="/payment/success" method="POST" class="btn btn-primary">
+                    <script 
+                    src="//checkout.stripe.com/v2/checkout.js" 
+                    data-key="<%= stripePubKey %>"
+                    class="stripe-button"
+                    data-amount="700"
+                    data-currency="CAD"
+                    data-name="michael"
+                    data-description="Demo Product"
+                    data-local="auto"></script>
+                </form>
             </div>
 
         <% }) %>

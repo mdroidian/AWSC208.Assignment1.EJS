@@ -18,6 +18,7 @@ router.get('/submit/delete/:id', blogController.delete_post);
 
 router.post('/submit', urlencodedParser, blogController.create_blog_post);
 router.post('/submit/update/:id', urlencodedParser, blogController.update_post);
+router.post('/payment/success', urlencodedParser, blogController.blog_payment);
 
 // trigger the endoint, and call the middleware, if the user is logged in or not
 router.get('/secured', requiresAuth(), indexController.secured);

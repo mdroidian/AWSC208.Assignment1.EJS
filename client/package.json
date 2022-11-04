@@ -19,6 +19,7 @@
     "express-openid-connect": "^2.9.0",
     "mongoose": "^6.7.0",
     "nodemon": "^2.0.20",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "stripe": "^10.16.0"
   }
 }

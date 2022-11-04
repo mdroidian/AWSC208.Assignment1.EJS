@@ -1,5 +1,42 @@
 const Blog = require('../model/blog')
+const dotenv = require('dotenv')
+dotenv.config({path: '../.env'});
 
+const stripePubKey = process.env.STRIPE_PUBLIC
+const stripeSecretKey = process.env.STRIPE_SECRET
+
+const stripe = require('stripe')(stripeSecretKey)
+
+const blog_payment = (req, res) => {
+    let isAuthenticated = req.oidc.isAuthenticated();
+    stripe.customers.create({
+        email: req.body.stripeEmail,
+        source: req.body.stripeToken,
+        name: "Michael Gartner",
+        address: {
+            line1: "123 street street",
+            city: "Of The Clouds"
+        }
+    })
+    .then((customer) => {
+        return stripe.charges.create({
+            amount: 700,
+            description: "Product Development",
+            currency: "CAD",
+            customer: customer.id,
+        })
+    })
+    .then((charge) => {
+        res.render('payment_success', {
+            title: "Payment Success",
+            isAuthenticated: isAuthenticated,
+        })
+    })
+    .catch((e) => {
+        console.log("Error ", e);
+    })
+    
+}
 
 const blog_index = (req, res) => {
     let isAuthenticated = req.oidc.isAuthenticated();
@@ -11,7 +48,8 @@ const blog_index = (req, res) => {
             res.render("posts", {
                 posts: result,
                 title: "Page",
-                isAuthenticated: isAuthenticated
+                isAuthenticated: isAuthenticated,
+                stripePubKey: stripePubKey,
             })
             // console.log(result)
             // console.log(isAuthenticated)
@@ -94,4 +132,6 @@ blog_index,
 edit_post,
 update_post,
 delete_post,
+blog_payment,
+
 }
