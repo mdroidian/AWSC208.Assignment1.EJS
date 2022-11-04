@@ -31,6 +31,11 @@ app.set("views", "views");
 app.set("view engine", "ejs");
 
 app.use(express.static("public"));
+
+// instead of body parser?
+// app.use(express.urlencoded({extended: true}))
+// app.use(express.json)
+
 // auth router attaches /login, /logout, and /callback routes to the baseURL
 app.use(auth(config));
 

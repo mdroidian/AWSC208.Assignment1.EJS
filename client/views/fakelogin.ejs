@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include ('partials/header') %>
+<body>
+    <div class="container">
+    
+        <%- include ('partials/nav') %>
+        
+
+
+            <div class="px-4 py-5 my-5 text-center">
+                <% if(locals.login) { %>
+                    <% if(login) { %>
+                <h1 class="display-5 fw-bold text-white">You are Logged In</h1>
+                <h1 class="display-5 fw-bold text-white"><%= login %></h1>
+
+                <% } %>
+                <% } %>
+                <div class="col-lg-6 mx-auto">
+                  <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                    <a href="/"><button type="button" class="btn btn-primary btn-lg px-4 gap-3">Go Home</button></a>
+                  </div>
+                </div>
+            </div>
+
+            <div id="toast" class="toast align-items-center bottom-0 start-50 translate-middle-x" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="d-flex">
+                  <div class="toast-body">
+                  You are logged in.
+                 </div>
+                  <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+            </div>
+
+    </div>    
+    
+<%- include ('partials/footer') %>
+</body>
+</html>
+
+
+<% if(locals.login) { %>
+    <% if(login) { %>
+<script>
+const myToastEl = document.getElementById('toast')
+// const myToast = bootstrap.Toast.getInstance(myToastEl)
+bootstrap.Toast.getOrCreateInstance(myToastEl).show()
+</script>
+    <% } %>
+<% } %>

@@ -8,6 +8,8 @@ const indexController = require('../controller/indexController');
 const bodyParser = require("body-parser");
 const urlencodedParser = bodyParser.urlencoded({ extended: false })
 
+router.get('/fakelogin', indexController.fakelogin);
+
 router.get('/', indexController.index);
 router.get('/contact', indexController.contact);
 router.get('/loggedin', indexController.logginedin);

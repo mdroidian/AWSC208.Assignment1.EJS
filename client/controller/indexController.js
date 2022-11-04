@@ -1,6 +1,17 @@
 const axios = require('axios');
+const { trusted } = require('mongoose');
 
 // homepage
+
+const fakelogin = (req, res) => {
+    let isAuthenticated = req.oidc.isAuthenticated();
+    res.render("fakelogin", { 
+        title: "Fake Login",
+        isAuthenticated: isAuthenticated,
+        login: true,
+     });
+}
+
 const index = async(req,res) => {
     let isAuthenticated = req.oidc.isAuthenticated();
     res.render("index", { 
@@ -123,4 +134,5 @@ module.exports = {
     secured,
     admin,
     not_admin,
+    fakelogin,
 }
