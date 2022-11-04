@@ -74,10 +74,24 @@ const update_post = async (req, res) => {
         })
 }
 
+const delete_post = async (req, res) => {
+    const _id = req.params.id;
+    const doc = await Blog.findOne({_id});
+
+    await doc.delete()
+    .then(() => {
+        res.redirect('/posts');
+    })
+    .catch(e => {
+        console.log("Error ", Error);
+    })
+}
+
 module.exports = {
 create_blog_post,
 show_posts,
 blog_index,
 edit_post,
 update_post,
+delete_post,
 }

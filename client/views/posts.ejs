@@ -12,8 +12,9 @@
                 <h5 class="card-header"><%= post.title %></h5>
                 <div class="card-body">
                   <p class="card-text"><%= post.body %></p>
-                  <a href="#" class="btn btn-primary"><%= post.snippet %></a>
-                  <a href="/submit/update/<%= post._id %>" class="btn btn-secondary">Update Post</a>
+                  <p class="card-text text-muted"><%= post.snippet %></p>
+                  <a href="/submit/update/<%= post._id %>" class="btn btn-primary">Update Post</a>
+                  <a href="/submit/delete/<%= post._id %>" class="btn btn-secondary">Delete Post</a>
                 </div>
             </div>
 
