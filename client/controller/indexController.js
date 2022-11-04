@@ -23,8 +23,6 @@ const logginedin = async(req, res) => {
     
 }
 
-
-
 const login = async(req, res) => {
     let isAuthenticated = req.oidc.isAuthenticated();
     if (isAuthenticated){
@@ -59,7 +57,6 @@ const contact = async(req, res) => {
         data
     });
 };
-
 
 
 // secured page

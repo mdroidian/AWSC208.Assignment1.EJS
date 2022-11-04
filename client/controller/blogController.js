@@ -47,7 +47,7 @@ const blog_index = (req, res) => {
         }).then(result => {
             res.render("posts", {
                 posts: result,
-                title: "Page",
+                title: "Posts Index",
                 isAuthenticated: isAuthenticated,
                 stripePubKey: stripePubKey,
             })
@@ -126,12 +126,11 @@ const delete_post = async (req, res) => {
 }
 
 module.exports = {
-create_blog_post,
-show_posts,
-blog_index,
-edit_post,
-update_post,
-delete_post,
-blog_payment,
-
+    create_blog_post,
+    show_posts,
+    blog_index,
+    edit_post,
+    update_post,
+    delete_post,
+    blog_payment,
 }
