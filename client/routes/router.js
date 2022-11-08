@@ -12,11 +12,13 @@ router.get('/fakelogin', indexController.fakelogin);
 
 router.get('/', indexController.index);
 router.get('/contact', indexController.contact);
+router.get('/profile', indexController.profile);
 router.get('/loggedin', indexController.logginedin);
 router.get('/login', requiresAuth(), indexController.login);
 router.get('/posts', blogController.blog_index);
 router.get('/submit/update/:id', blogController.edit_post);
 router.get('/submit/delete/:id', blogController.delete_post);
+
 
 router.post('/submit', urlencodedParser, blogController.create_blog_post);
 router.post('/submit/update/:id', urlencodedParser, blogController.update_post);

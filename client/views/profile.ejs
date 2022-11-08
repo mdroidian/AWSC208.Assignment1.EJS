@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include ('partials/header') %>
+<body>
+    <div class="container">
+
+        <%- include ('partials/nav') %>
+        <%- include ('partials/banner') %>
+        <p class="text-white"><%= JSON.stringify(user) %></p>
+        <p class="text-white"><%= JSON.stringify(userData) %></p>
+        
+        
+    </div>
+<%- include ('partials/footer') %>
+</body>
+</html>

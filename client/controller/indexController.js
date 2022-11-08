@@ -69,6 +69,21 @@ const contact = async(req, res) => {
     });
 };
 
+const profile = async(req, res) => {
+    let data = {}
+    let isAuthenticated = req.oidc.isAuthenticated();
+    let user = req.oidc.user;
+    let userData = req.oidc.user.app_metadata;
+    // let userRoles = req.oidc.user.app_metadata.roles;
+
+    res.render("profile", { 
+        title: "Profile",
+        isAuthenticated: isAuthenticated,
+        user,
+        userData,
+        // userRoles,
+    });
+};
 
 // secured page
 const secured = async(req, res) => {
@@ -131,6 +146,7 @@ module.exports = {
     login,
     logginedin,
     contact,
+    profile,
     secured,
     admin,
     not_admin,
